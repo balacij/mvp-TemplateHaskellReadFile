@@ -1,13 +1,15 @@
 {-# LANGUAGE TemplateHaskell #-}
-module Lib
-    ( someFunc
-    ) where
 
-import Language.Haskell.TH
+module Lib (someFunc) where
 
-{- Credits to 'leftaroundabout': https://stackoverflow.com/a/44369564/16760741 -}
-readIn :: String
-readIn = $(LitE . StringL <$> runIO (readFile "src/example.txt"))
+import           Config (DC(..), readInCfg)
+import           Data.Maybe (fromMaybe)
 
 someFunc :: IO ()
-someFunc = putStrLn readIn
+someFunc = do
+  putStrLn $ "version: " ++ version dc
+  putStrLn $ "name: " ++ name dc
+
+dc :: DC
+dc = $readInCfg
+

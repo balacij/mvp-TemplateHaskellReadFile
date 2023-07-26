@@ -21,6 +21,7 @@ source-repository head
 
 library
   exposed-modules:
+      Config
       Lib
   other-modules:
       Paths_TemplateHaskellEmbedFile
@@ -28,7 +29,8 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , template-haskell
   default-language: Haskell2010
 
@@ -41,6 +43,7 @@ executable TemplateHaskellEmbedFile-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       TemplateHaskellEmbedFile
+    , aeson
     , base >=4.7 && <5
     , template-haskell
   default-language: Haskell2010
@@ -55,6 +58,7 @@ test-suite TemplateHaskellEmbedFile-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       TemplateHaskellEmbedFile
+    , aeson
     , base >=4.7 && <5
     , template-haskell
   default-language: Haskell2010
